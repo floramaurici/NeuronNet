@@ -86,6 +86,11 @@ std::set<size_t> Network::step(const std::vector<double>& tab) {
 		  index.insert(i); 
 		  neurons[i].reset();
 		}
+	}
+		
+		for (size_t i(0); i<neurons.size() ; ++i) {
+		
+	
 		
 		std::vector<std::pair<size_t, double> > connected;
 		connected = neighbors(i);
