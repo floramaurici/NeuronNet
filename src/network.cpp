@@ -62,6 +62,67 @@ size_t Network::random_connect(const double &mean_deg, const double &mean_streng
     return num_links;
 }
 
+
+std::pair<size_t, double> Network::degree(const size_t& c) const {
+	std::vector<std::pair<size_t, double>> connected;
+	connected = neighbors(c);
+	double sum_intensity(0);
+	
+	for (size_t i(0); i<connected.size() ; ++i)
+		{ sum_intensity += connected[i].second; }
+				
+	return std::pair<size_t, double> (connected.size(), sum_intensity);	
+	}
+
+std::set<size_t> Network::step(const std::vector<double>& tab) {
+	std::set<size_t> index;
+	double  inhib_sum(0);
+	double  exited_sum(0);
+	double input_thalamic(0);
+	
+	for (size_t i(0); i<neurons.size() ; ++i) {
+		
+		if (neurons[i].firing() ) { 
+		  index.insert(i); 
+		  neurons[i].reset();
+		}
+		
+		std::vector<std::pair<size_t, double> > connected;
+		connected = neighbors(i);
+			for (size_t j(0); j<connected.size() ; ++j) {
+				
+				if (index.count(j) == 1) { 
+				if (neurons[j].is_inhibitory() ) { inhib_sum += connected[j].second; }
+				else { exited_sum += connected[j].second; }
+				}
+			}
+		
+		if (neurons[i].is_inhibitory() ) { input_thalamic = tab[i]*0.4;} //we change the variance when it's an inhibitory neuron
+		else {input_thalamic =tab[i]; }
+			
+		
+	
+	neurons[i].input( input_thalamic + 0.5*exited_sum + inhib_sum); 
+	neurons[i].step();
+	
+	}
+return index;
+}  
+
+std::vector<std::pair<size_t, double> > Network::neighbors(const size_t& c) const  
+{
+	std::vector<std::pair<size_t, double> > neighbor;
+	for (std::map<std::pair<size_t, size_t>, double>::const_iterator it=links.lower_bound({c,0}); it!=links.cend() and (it->first.first == c); ++it) { //we begin the iteration at {c,0} to avoid a too long iteration
+		
+		  	
+			std::pair<size_t, double> index (it->first.second, it->second);
+			neighbor.push_back(index);
+			 
+	}
+	return neighbor;
+}
+
+
 std::vector<double> Network::potentials() const {
     std::vector<double> vals;
     for (size_t nn=0; nn<size(); nn++)
