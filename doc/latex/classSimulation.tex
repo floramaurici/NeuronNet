@@ -1,0 +1,98 @@
+\hypertarget{classSimulation}{}\section{Simulation Class Reference}
+\label{classSimulation}\index{Simulation@{Simulation}}
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSimulation_a03b7d1f1e35474eb621a3a69a225af97}{Simulation} (const int \+\_\+s, const int \+\_\+t, const double \+\_\+i=\+\_\+\+P\+R\+O\+P\+\_\+\+I\+N\+H\+I\+B\+\_\+)
+\item 
+\hyperlink{classSimulation_a2cc0f2dc7164778a64462d8b9ec5206d}{Simulation} (int, char $\ast$$\ast$)
+\item 
+void \hyperlink{classSimulation_acd6ce915b07465d9aaaa5fdcbb5ae077}{load\+\_\+configuration} (const std\+::string \&infile)
+\item 
+void \hyperlink{classSimulation_afc095e76c2bcee6d31a4614022d609c3}{parse\+\_\+types} (std\+::string)
+\item 
+size\+\_\+t \hyperlink{classSimulation_a7d0ca858dfec187001ecbab2081f9d04}{size\+\_\+type} (const std\+::string \&\+\_\+s) const
+\item 
+void \hyperlink{classSimulation_ae5c367f87c0b5dc9740bc6d00e44e72c}{run} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the main class. It manages user inputs, defines the simulation parameters and constructs the \hyperlink{classNetwork}{Network} net. It then runs the simulation and prints the results to the output streams. These streams can be files with names based on the string output with a suffix.
+
+\hyperlink{classSimulation}{Simulation} parameters\+:
+\begin{DoxyItemize}
+\item endtime \+: total number of time-\/steps,
+\item size \+: total number of neurons,
+\item degree \+: average connectivity of a neuron,
+\item thalam \+: st. dev. of thalamic input (for excitatory neurons),
+\item streng \+: average intensity of connections,
+\item inhib \+: fraction of inhibitory neurons in the network,
+\end{DoxyItemize}
+
+The map ntypes describes the neuron population\+: its keys are the neuron types from Neuron\+::\+Neuron\+Types and values are the corresponding counts. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSimulation_a03b7d1f1e35474eb621a3a69a225af97}\label{classSimulation_a03b7d1f1e35474eb621a3a69a225af97}} 
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\subsubsection{\texorpdfstring{Simulation()}{Simulation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Simulation\+::\+Simulation (\begin{DoxyParamCaption}\item[{const int}]{\+\_\+s,  }\item[{const int}]{\+\_\+t,  }\item[{const double}]{\+\_\+i = {\ttfamily \+\_\+PROP\+\_\+INHIB\+\_\+} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor initializes the following variables\+: 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+s} & (int)\+: size of network (number of neurons) \\
+\hline
+{\em \+\_\+t} & (int)\+: duration of simulation (number of time-\/steps) \\
+\hline
+{\em \+\_\+i} & (double)\+: fraction of inhibitory neurons in the network \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSimulation_a2cc0f2dc7164778a64462d8b9ec5206d}\label{classSimulation_a2cc0f2dc7164778a64462d8b9ec5206d}} 
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\subsubsection{\texorpdfstring{Simulation()}{Simulation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Simulation\+::\+Simulation (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Constructor based on user inputs, takes command-\/line arguments and passes them to parse. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSimulation_acd6ce915b07465d9aaaa5fdcbb5ae077}\label{classSimulation_acd6ce915b07465d9aaaa5fdcbb5ae077}} 
+\index{Simulation@{Simulation}!load\+\_\+configuration@{load\+\_\+configuration}}
+\index{load\+\_\+configuration@{load\+\_\+configuration}!Simulation@{Simulation}}
+\subsubsection{\texorpdfstring{load\+\_\+configuration()}{load\_configuration()}}
+{\footnotesize\ttfamily void Simulation\+::load\+\_\+configuration (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{infile }\end{DoxyParamCaption})}
+
+Construct a network as specified in a configuration file 
+\begin{DoxyParams}{Parameters}
+{\em infile} & (string)\+: filename \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSimulation_afc095e76c2bcee6d31a4614022d609c3}\label{classSimulation_afc095e76c2bcee6d31a4614022d609c3}} 
+\index{Simulation@{Simulation}!parse\+\_\+types@{parse\+\_\+types}}
+\index{parse\+\_\+types@{parse\+\_\+types}!Simulation@{Simulation}}
+\subsubsection{\texorpdfstring{parse\+\_\+types()}{parse\_types()}}
+{\footnotesize\ttfamily void Simulation\+::parse\+\_\+types (\begin{DoxyParamCaption}\item[{std\+::string}]{types }\end{DoxyParamCaption})}
+
+Parses a string such as {\bfseries FS\+:0.\+2,IB\+:0.\+2,CH\+:0.\+15} and constructs the network accordingly (20\% of {\itshape FS} neurons, 20\% of {\itshape IB} and 15of {\itshape CH}). These neuron types are found in Neuron\+::\+Neuron\+Types. The neuron population is completed with default ({\itshape RS}) neurons and randomly connected with \hyperlink{classNetwork_a4c751a78c7bc5e27c6b36df78c9c70c0}{Network\+::random\+\_\+connect}. \mbox{\Hypertarget{classSimulation_ae5c367f87c0b5dc9740bc6d00e44e72c}\label{classSimulation_ae5c367f87c0b5dc9740bc6d00e44e72c}} 
+\index{Simulation@{Simulation}!run@{run}}
+\index{run@{run}!Simulation@{Simulation}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Simulation\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The main operation of this class\+: runs the simulation through a loop with endtime steps. Each iteration calls \hyperlink{classNetwork_a53665a3a69e6ec894c313d0ce3fb7f34}{Network\+::step} with a random value of thalamic input (Random\+Numbers\+::normal distribution), then writes out the results. \mbox{\Hypertarget{classSimulation_a7d0ca858dfec187001ecbab2081f9d04}\label{classSimulation_a7d0ca858dfec187001ecbab2081f9d04}} 
+\index{Simulation@{Simulation}!size\+\_\+type@{size\+\_\+type}}
+\index{size\+\_\+type@{size\+\_\+type}!Simulation@{Simulation}}
+\subsubsection{\texorpdfstring{size\+\_\+type()}{size\_type()}}
+{\footnotesize\ttfamily size\+\_\+t Simulation\+::size\+\_\+type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+s }\end{DoxyParamCaption}) const}
+
+Returns the number of neurons of type \+\_\+s. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/maurici/myfiles/\+Programmation/\+Prog B\+A3/projet2/\+Neuron\+Net/src/simulation.\+h\item 
+/home/maurici/myfiles/\+Programmation/\+Prog B\+A3/projet2/\+Neuron\+Net/src/simulation.\+cpp\end{DoxyCompactItemize}

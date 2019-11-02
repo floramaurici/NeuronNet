@@ -1,0 +1,117 @@
+\hypertarget{classNeuron}{}\section{Neuron Class Reference}
+\label{classNeuron}\index{Neuron@{Neuron}}
+
+
+{\ttfamily \#include $<$neuron.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNeuron_a823487d01615fadb8ac19a2768dd9d96}{Neuron} ()
+\item 
+\mbox{\Hypertarget{classNeuron_a85049e5f8745c53867178dd1cf6e51e3}\label{classNeuron_a85049e5f8745c53867178dd1cf6e51e3}} 
+void {\bfseries set\+\_\+params} (const \hyperlink{structNeuronParams}{Neuron\+Params} \&, const double n=0)
+\item 
+\mbox{\Hypertarget{classNeuron_a533359bca915ef99c96e50d4bfff58b2}\label{classNeuron_a533359bca915ef99c96e50d4bfff58b2}} 
+void {\bfseries set\+\_\+type} (std\+::string)
+\item 
+\mbox{\Hypertarget{classNeuron_a0759d03a357708ee4174f1bbb2b0b8d7}\label{classNeuron_a0759d03a357708ee4174f1bbb2b0b8d7}} 
+void {\bfseries set\+\_\+default\+\_\+params} (const std\+::string \&, double n=0)
+\item 
+\mbox{\Hypertarget{classNeuron_a37459ba1dc4b0060707c33bf2ad5b10d}\label{classNeuron_a37459ba1dc4b0060707c33bf2ad5b10d}} 
+bool {\bfseries is\+\_\+type} (const std\+::string \&)
+\item 
+\mbox{\Hypertarget{classNeuron_abcf0b4ecd00cba630bfd2e764a61b5ee}\label{classNeuron_abcf0b4ecd00cba630bfd2e764a61b5ee}} 
+std\+::string {\bfseries type} ()
+\item 
+\mbox{\Hypertarget{classNeuron_a649c6080b0749e6e642bf9df8f191d2d}\label{classNeuron_a649c6080b0749e6e642bf9df8f191d2d}} 
+bool {\bfseries is\+\_\+inhibitory} () const
+\item 
+\mbox{\Hypertarget{classNeuron_aa1481c474df55ad14373e51c6bb0f6fd}\label{classNeuron_aa1481c474df55ad14373e51c6bb0f6fd}} 
+void {\bfseries set\+\_\+inhibitory} ()
+\item 
+bool \hyperlink{classNeuron_a4f477ebb623a7681c0f09dbfc4608a0d}{firing} () const
+\item 
+void \hyperlink{classNeuron_a6817fc5bf2128150b41b65e74f018408}{reset} ()
+\item 
+void \hyperlink{classNeuron_a224d5cead5f94bbe15ae49774db3e174}{step} ()
+\item 
+\mbox{\Hypertarget{classNeuron_a47ea1a8f25dd62a34c9e0bdc0b7ae7fb}\label{classNeuron_a47ea1a8f25dd62a34c9e0bdc0b7ae7fb}} 
+void {\bfseries potential} (const double \&\+\_\+p)
+\item 
+\mbox{\Hypertarget{classNeuron_aab6607e17778ff1b4c05610c935b3156}\label{classNeuron_aab6607e17778ff1b4c05610c935b3156}} 
+double {\bfseries potential} () const
+\item 
+\mbox{\Hypertarget{classNeuron_a2e84bc427827092295070dec404886f4}\label{classNeuron_a2e84bc427827092295070dec404886f4}} 
+double {\bfseries recovery} () const
+\item 
+\mbox{\Hypertarget{classNeuron_ab6b4f1a9633eaae9967cc6b226eed5fa}\label{classNeuron_ab6b4f1a9633eaae9967cc6b226eed5fa}} 
+void {\bfseries input} (const double i)
+\item 
+\mbox{\Hypertarget{classNeuron_ac00c31820b58e9c6f909db6a12e58b34}\label{classNeuron_ac00c31820b58e9c6f909db6a12e58b34}} 
+double {\bfseries input} () const
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Output strings}\par
+{\em For printing purposes\+: all parameters and dynamic values are returned as a formatted string (tab-\/delimited concatenation of values). }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNeuron_a24dc0979745c7e25cfa997d88d973896}\label{classNeuron_a24dc0979745c7e25cfa997d88d973896}} 
+std\+::string {\bfseries formatted\+\_\+params} () const
+\item 
+\mbox{\Hypertarget{classNeuron_aa1c46c99ed3e1a349b5e0ee82aec3026}\label{classNeuron_aa1c46c99ed3e1a349b5e0ee82aec3026}} 
+std\+::string {\bfseries formatted\+\_\+values} () const
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}\textbf{ Static helpers}\par
+{\em type\+\_\+exists checks if the string {\ttfamily s} exists in the map Neuron\+Types and type\+\_\+default returns the corresponding \hyperlink{structNeuronParams}{Neuron\+Params} from Neuron\+Types. }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNeuron_a3a80c93e7cf5214b5e1a9925742bbe8e}\label{classNeuron_a3a80c93e7cf5214b5e1a9925742bbe8e}} 
+static bool {\bfseries type\+\_\+exists} (const std\+::string \&s)
+\item 
+\mbox{\Hypertarget{classNeuron_a4e5c4e0a512460dd59449a0bec4d0db7}\label{classNeuron_a4e5c4e0a512460dd59449a0bec4d0db7}} 
+static \hyperlink{structNeuronParams}{Neuron\+Params} {\bfseries type\+\_\+default} (const std\+::string \&s)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+A neuron type is defined by four parameters {\ttfamily a}, {\ttfamily b}, {\ttfamily c}, {\ttfamily d}, and the \char`\"{}inhibitory\char`\"{} or \char`\"{}excitatory\char`\"{} quality.
+
+Standard types are provided in Neuron\+Types and identified by a 2 or 3-\/letter string.
+
+The dynamic variables are the membrane potential, the recovery variable and the input. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNeuron_a823487d01615fadb8ac19a2768dd9d96}\label{classNeuron_a823487d01615fadb8ac19a2768dd9d96}} 
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection{\texorpdfstring{Neuron()}{Neuron()}}
+{\footnotesize\ttfamily Neuron\+::\+Neuron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor\+: a {\itshape RS} neuron. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classNeuron_a4f477ebb623a7681c0f09dbfc4608a0d}\label{classNeuron_a4f477ebb623a7681c0f09dbfc4608a0d}} 
+\index{Neuron@{Neuron}!firing@{firing}}
+\index{firing@{firing}!Neuron@{Neuron}}
+\subsubsection{\texorpdfstring{firing()}{firing()}}
+{\footnotesize\ttfamily bool Neuron\+::firing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+A neuron is firing if its membrane potential exceeds the firing threshold firing\+\_\+thresh \mbox{\Hypertarget{classNeuron_a6817fc5bf2128150b41b65e74f018408}\label{classNeuron_a6817fc5bf2128150b41b65e74f018408}} 
+\index{Neuron@{Neuron}!reset@{reset}}
+\index{reset@{reset}!Neuron@{Neuron}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Neuron\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+After firing, the neuron is reset\+: \+\_\+poten is set to {\ttfamily c}, \+\_\+recov is increased by {\ttfamily d}. \mbox{\Hypertarget{classNeuron_a224d5cead5f94bbe15ae49774db3e174}\label{classNeuron_a224d5cead5f94bbe15ae49774db3e174}} 
+\index{Neuron@{Neuron}!step@{step}}
+\index{step@{step}!Neuron@{Neuron}}
+\subsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily void Neuron\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+One step of time evolution\+: \+\_\+poten and \+\_\+recov are updated according to the Izhikevich equations. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/maurici/myfiles/\+Programmation/\+Prog B\+A3/projet2/\+Neuron\+Net/src/neuron.\+h\item 
+/home/maurici/myfiles/\+Programmation/\+Prog B\+A3/projet2/\+Neuron\+Net/src/neuron.\+cpp\end{DoxyCompactItemize}
